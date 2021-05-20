@@ -4,7 +4,7 @@ server:
       enabled: true
 spring:
   message:
-    welcome: Spring Boot Live-Repload with DockerFile!!
+    welcome: Spring Boot Live-Repload with Dockerfile!!
   output:
     ansi:
       enabled: always
