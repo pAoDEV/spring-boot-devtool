@@ -1,0 +1,10 @@
+server:
+  mvc:
+    favicon:
+      enabled: true
+spring:
+  message:
+    welcome: Spring Boot Live-Repload!!
+  output:
+    ansi:
+      enabled: always
