@@ -8,3 +8,9 @@ spring:
   output:
     ansi:
       enabled: always
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+      base-path: /stats
