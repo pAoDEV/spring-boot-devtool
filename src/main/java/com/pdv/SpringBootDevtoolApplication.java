@@ -3,6 +3,8 @@ package com.pdv;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,11 +23,17 @@ public class SpringBootDevtoolApplication {
     @Value("${spring.message.welcome}")
     private String welcomeMessage;
 
+    @GetMapping({"", "/"})
+    public ResponseEntity index() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Location", "/hello/guest");
+        return new ResponseEntity<String>(headers, HttpStatus.FOUND);
+    }
+
     @GetMapping({"hello", "hello/{value}"})
     public ResponseEntity hello(
             @PathVariable(value = "value", required = false) String value
     ) {
-
         return ResponseEntity.ok(new HashMap<String, Object>() {{
             put("message", welcomeMessage);
             put("value", value);
